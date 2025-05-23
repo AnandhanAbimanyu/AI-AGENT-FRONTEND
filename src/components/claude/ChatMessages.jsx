@@ -61,7 +61,7 @@ export default function ChatMessages({ messages, loading, loadingType }) {
                 <div className="bg-white p-4 rounded shadow">
                   <div dangerouslySetInnerHTML={{ __html: message.preview }} />
                 </div>
-                <a 
+                {/* <a 
                 href={`http://localhost:3002/uploads/${message.downloadUrl.split('/').pop()}`}
                 download={`document.${message.mediaType}`}
                 className="text-sm text-blue-500 hover:text-blue-700 mt-2 block"
@@ -69,7 +69,16 @@ export default function ChatMessages({ messages, loading, loadingType }) {
                 rel="noopener noreferrer"
                 >
                 Download {message.mediaType.toUpperCase()}
-                </a>
+                </a> */}
+                 <a 
+                href={message.downloadUrl}
+                download={`document.${message.mediaType}`}
+                className="text-sm text-blue-500 hover:text-blue-700 mt-2 block"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download {message.mediaType.toUpperCase()}
+              </a>
 
               </div>
             ) : (
