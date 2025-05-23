@@ -12,10 +12,11 @@ export default function Layout({ children }) {
     { title: 'Claude (Anthropic)', path: '/claude', description: 'Advanced Language Model' },
     { title: 'ElevenLabs AI', path: '/elevenlabs', description: 'Voice Generation AI' },
     { title: 'Gemini AI', path: '/gemini', description: 'Google\'s Multimodal AI' },
-    { title: 'Deepseek', path: '/deepseek', description: 'AI Research Assistant' },
-    { title: 'King AI', path: '/king-ai', description: 'Video Generation AI' },
-    { title: 'Redraft AI', path: '/redraft', description: 'Image Generation Specialist' },
-    { title: 'Midjourney AI', path: '/midjourney', description: 'Creative Image Generation' },
+    { title: 'Deepseek (In Progress)', path: '/deepseek', description: 'AI Research Assistant' },
+    { title: 'Kling AI (In Progress)', path: '/kling-ai', description: 'Video Generation AI' },
+    { title: 'Recraft AI (In Progress)', path: '/recraft', description: 'Image Generation Specialist' },
+    { title: 'Midjourney AI (In Progress)', path: '/midjourney', description: 'Creative Image Generation' },
+    { title: 'Skyreels AI (In Progress)', path: '/skyreels', description: 'Creative video Generation' },
   ];
 
   return (
