@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
 import Layout from '@/components/Layout';
 import ChatInput from '@/components/openAi/ChatInput';
 import ChatMessages from '@/components/openAi/ChatMessages';
@@ -8,6 +9,11 @@ import ChatMessages from '@/components/openAi/ChatMessages';
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  useEffect(()=>{
+    router.push('/openai');
+  },[])
 
   const handleSend = async (message, type) => {
     setLoading(true);
