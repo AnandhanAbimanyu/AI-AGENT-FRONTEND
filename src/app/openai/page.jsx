@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { useState } from 'react';
 import ChatInput from '@/components/openAi/ChatInput';
 import ChatMessages from '@/components/openAi/ChatMessages';
+import API from "@/utils/API";
 
 export default function OpenAIPage() {
   const [messages, setMessages] = useState([]);
@@ -55,7 +56,7 @@ export default function OpenAIPage() {
 //           isStreaming: true
 //         }]);
 
-//         const response = await fetch(`http://localhost:3002${endpoint}`, {
+//         const response = await fetch(`${API.BASE_URL}${endpoint}`, {
 //           method: 'POST',
 //           headers: { 'Content-Type': 'application/json' },
 //           body: JSON.stringify({ text: message })
@@ -96,7 +97,7 @@ export default function OpenAIPage() {
 //         ));
 
 //       } else {
-//         const response = await fetch(`http://localhost:3002${endpoint}`, {
+//         const response = await fetch(`${API.BASE_URL}${endpoint}`, {
 //           method: 'POST',
 //           headers: { 'Content-Type': 'application/json' },
 //           body: JSON.stringify({ text: message })
@@ -186,7 +187,7 @@ export default function OpenAIPage() {
       }]);
 
       if (type === 'text') {
-        const response = await fetch(`http://localhost:3002${endpoint}`, {
+        const response = await fetch(`${API.BASE_URL}${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: message })
@@ -204,7 +205,7 @@ export default function OpenAIPage() {
         }]);
 
       } else {
-        const response = await fetch(`http://localhost:3002${endpoint}`, {
+        const response = await fetch(`${API.BASE_URL}${endpoint}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: message })
@@ -260,7 +261,7 @@ export default function OpenAIPage() {
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">OpenAI Integration</h1>
+        <h1 className="text-4xl font-bold mb-8">OpenAI</h1>
         <div className="bg-white rounded-lg shadow-xl p-6">
           <ChatMessages 
             messages={messages} 

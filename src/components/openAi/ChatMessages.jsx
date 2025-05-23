@@ -21,7 +21,7 @@ export default function ChatMessages({ messages, loading, loadingType }) {
               alt="Start chatting"
               className="mx-auto mb-4 h-80 object-contain rounded-lg"
             />
-            <p className="text-gray-500">Start a conversation to get a voice response.</p>
+            <p className="text-gray-500">Start a conversation to get a response.</p>
           </div>
         </div>
       )}

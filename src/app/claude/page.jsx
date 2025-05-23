@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { useState } from 'react';
 import ChatInput from '@/components/claude/ChatInput';
 import ChatMessages from '@/components/claude/ChatMessages';
+import API from "@/utils/API";
 
 export default function OpenAIPage() {
   const [messages, setMessages] = useState([]);
@@ -46,7 +47,7 @@ const handleSend = async (message, type) => {
       mediaType: 'text'
     }]);
 
-    const response = await fetch(`http://localhost:3002${endpoint}`, {
+    const response = await fetch(`${API.BASE_URL}${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: message })

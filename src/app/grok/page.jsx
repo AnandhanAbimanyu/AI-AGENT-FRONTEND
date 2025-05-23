@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { useState } from 'react';
 import ChatInput from '@/components/grokAi/ChatInput';
 import ChatMessages from '@/components/grokAi/ChatMessages';
+import API from "@/utils/API";
 
 export default function OpenAIPage() {
   const [messages, setMessages] = useState([]);
@@ -46,7 +47,7 @@ const handleSend = async (message, type) => {
       mediaType: 'text'
     }]);
 
-    const response = await fetch(`http://localhost:3002${endpoint}`, {
+    const response = await fetch(`${API.BASE_URL}${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: message })
@@ -109,7 +110,7 @@ const handleSend = async (message, type) => {
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Grok AI Integration</h1>
+        <h1 className="text-4xl font-bold mb-8">Grok AI</h1>
         <div className="bg-white rounded-lg shadow-xl p-6">
           <ChatMessages 
             messages={messages} 

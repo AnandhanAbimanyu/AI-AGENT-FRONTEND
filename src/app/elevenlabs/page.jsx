@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { useState } from 'react';
 import ChatInput from '@/components/elevenlabs/ChatInput';
 import ChatMessages from '@/components/elevenlabs/ChatMessages';
+import API from "@/utils/API";
 
 export default function OpenAIPage() {
   const [messages, setMessages] = useState([]);
@@ -25,7 +26,7 @@ const handleSend = async (message) => {
       },
     ]);
 
-    const response = await fetch('http://localhost:3002/elevenlabsai/api/chat', {
+    const response = await fetch(`${API.BASE_URL}/elevenlabsai/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: message }),
