@@ -124,13 +124,13 @@ const handleSend = async (message, type) => {
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Skyreels AI</h1>
         <div className="bg-white rounded-lg shadow-xl p-6">
-             In progress...
-          {/* <ChatMessages 
+             {/* In progress... */}
+          <ChatMessages 
             messages={messages} 
             loading={loading}
             loadingType={loadingType}
           />
-          <ChatInput onSend={handleSend} disabled={loading} /> */}
+          <ChatInput onSend={handleSend} disabled={loading} />
         </div>
       </div>
     </Layout>

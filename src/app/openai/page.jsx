@@ -5,11 +5,13 @@ import { useState } from 'react';
 import ChatInput from '@/components/openAi/ChatInput';
 import ChatMessages from '@/components/openAi/ChatMessages';
 import API from "@/utils/API";
+import axios from 'axios';
 
 export default function OpenAIPage() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingType, setLoadingType] = useState(null);
+    const [progress, setProgress] = useState(0);
 
 //   const handleSend = async (message, type) => {
 //     setLoading(true);
@@ -194,6 +196,27 @@ export default function OpenAIPage() {
         });
 
         const data = await response.json();
+        // const response = await axios.post(
+        // `${API.BASE_URL}${endpoint}`,
+        // { text: message },
+        // {
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   onDownloadProgress: (progressEvent) => {
+        //     const total = progressEvent.total;
+
+        //     if (total) {
+        //       const percent = Math.round((progressEvent.loaded * 100) / total);
+        //       console.log(`Downloaded: ${percent}%`);
+        //       setProgress(percent);
+        //     } else {
+        //       console.log('Total size not available, cannot compute percentage.');
+        //     }
+        //   },
+        //   }
+        //   );
+        //   const data = response.data;
 
         // Assuming response format: { choices: [{ message: { content: "..." } }] }
         const aiText = data.choices?.[0]?.message?.content || 'No response received.';

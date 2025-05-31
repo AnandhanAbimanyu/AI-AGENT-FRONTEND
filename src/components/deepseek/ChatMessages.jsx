@@ -1,17 +1,15 @@
-import Markdown from "react-markdown";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+
 export default function ChatMessages({ messages, loading, loadingType }) {
-     const formatMessageContent = (content) => {
-    // Split content into words and join with proper spacing
-    return content
+  const formatMessageContent = (content) =>
+    content
       .split(/\s+/)
-      .filter(word => word.length > 0)
+      .filter((word) => word.length > 0)
       .join(' ');
-  };
-  
+
   return (
-    <div className="space-y-4 mb-4 h-[600px] overflow-y-auto">
+    <div className="space-y-4 mb-4 h-[600px] overflow-y-auto p-2">
       {messages.length === 0 && !loading && (
         <div className="flex justify-center items-center h-full">
           <div className="text-center">
@@ -38,11 +36,13 @@ export default function ChatMessages({ messages, loading, loadingType }) {
                 : 'bg-gray-200 text-black'
             }`}
           >
-            {message.mediaType === 'image' ? (
+            {/* Image handling */}
+            {message.mediaType === 'textToImage' ? (
               <img src={message.content} alt="AI Generated" className="rounded" />
+
             ) : message.mediaType === 'audio' ? (
-              <div className="audio-player">
-                <audio controls preload="auto" className="w-full">
+              <div>
+                <audio controls className="w-full">
                   <source src={message.content} type="audio/mpeg" />
                   <source src={message.content} type="audio/mp3" />
                   Your browser does not support the audio element.
@@ -50,11 +50,12 @@ export default function ChatMessages({ messages, loading, loadingType }) {
                 <a
                   href={message.content}
                   download="generated-audio.mp3"
-                  className="text-sm text-blue-500 hover:text-blue-700 mt-2 block"
+                  className="text-sm text-blue-500 hover:underline mt-2 block"
                 >
                   Download Audio
                 </a>
               </div>
+
             ) : ['ppt', 'pdf', 'doc', 'excel'].includes(message.mediaType) ? (
               <div className="document-content">
                 <div className="bg-white p-4 rounded shadow">
@@ -80,21 +81,24 @@ export default function ChatMessages({ messages, loading, loadingType }) {
               </a>
 
               </div>
+
             ) : (
-                <>{message.isStreaming ? (
-                <pre className="whitespace-pre-wrap">{message.content}</pre>
+              <>
+                {message.isStreaming ? (
+                  <pre className="whitespace-pre-wrap">{message.content}</pre>
                 ) : (
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {message.content}
-                </ReactMarkdown>
+                  </ReactMarkdown>
                 )}
-                </>
+              </>
             )}
           </div>
         </div>
       ))}
-      
-      {loading && !messages.some(m => m.isStreaming) && (
+
+      {/* Loader when waiting for response */}
+      {loading && !messages.some((m) => m.isStreaming) && (
         <div className="flex justify-start">
           <div className="max-w-[70%] rounded-lg p-3 bg-gray-200">
             {loadingType === 'image' ? (
