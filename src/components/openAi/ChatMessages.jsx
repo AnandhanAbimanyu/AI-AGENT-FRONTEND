@@ -11,7 +11,7 @@ export default function ChatMessages({ messages, loading, loadingType }) {
   };
   
   return (
-    <div className="space-y-4 mb-4 h-[600px] overflow-y-auto">
+    <div className="space-y-4 mb-4 h-[500px] overflow-y-auto">
       {messages.length === 0 && !loading && (
         <div className="flex justify-center items-center h-full">
           <div className="text-center">
